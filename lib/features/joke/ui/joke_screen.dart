@@ -61,15 +61,7 @@ class _JokeScreenState extends State<JokeScreen> {
           if(state is NewJokeAddedActionState) {
             print('got a jokeState'); // will show snackBar here
           }
-
         },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // _jokeBloc.add(FetchJokeEvent());
-          // print('adding FetchJokeEvent');
-        },
-        child: const Icon(Icons.add),
       ),
     );
   }
