@@ -1,4 +1,4 @@
-name: Unlimit Smiles
+name: unlimit_smiles
 description: An engaging mobile app designed to brighten your day with a dose of humor and laughter. With a simple and intuitive interface, this app delivers a fresh, funny joke to your device every minute
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -44,6 +44,7 @@ dependencies:
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.13.1
   flutter_test:
     sdk: flutter
 
@@ -56,6 +57,11 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/1024.png"
 
 # The following section is specific to Flutter packages.
 flutter:

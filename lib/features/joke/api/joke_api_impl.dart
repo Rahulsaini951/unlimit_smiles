@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import '../utils/constants.dart';
+import '../../../utils/strings.dart';
 import 'joke_api.dart';
 
 class JokeApiImpl implements JokeRepository {

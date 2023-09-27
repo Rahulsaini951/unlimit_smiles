@@ -20,7 +20,7 @@ class JokeBloc extends Bloc<JokeEvent, JokeState> {
   Timer? _timer;
 
   void _initializeTimer() {
-    _timer = Timer.periodic(const Duration(seconds: 5), (timer) {
+    _timer = Timer.periodic(const Duration(minutes: 1), (timer) {
       add(FetchJokeEvent());
     });
   }

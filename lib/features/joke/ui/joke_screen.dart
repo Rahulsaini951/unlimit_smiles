@@ -2,7 +2,8 @@ import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unlimit_smiles/features/joke/ui/joke_card_widget.dart';
-import 'package:unlimit_smiles/features/joke/utils/constants.dart';
+import 'package:unlimit_smiles/utils/constants.dart';
+import '../../../utils/strings.dart';
 import '../jokebloc/joke_bloc.dart';
 
 class JokeScreen extends StatefulWidget {
@@ -25,8 +26,10 @@ class _JokeScreenState extends State<JokeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.primary_background,
       appBar: AppBar(
-        title: const Text(appTitle),
+        backgroundColor: AppColors.primary_background,
+        title: const Text(appTitle, style: TextStyle(fontWeight: FontWeight.w600, color: AppColors.black),),
       ),
       body: BlocConsumer<JokeBloc, JokeState>(
         bloc: _jokeBloc,
@@ -44,7 +47,7 @@ class _JokeScreenState extends State<JokeScreen> {
             );
           } else if (state is JokeError) {
             return Center(
-              child: Text(state.error),
+              child: Text(state.error, style: const TextStyle(fontWeight: FontWeight.normal, color: AppColors.reddish)),
             );
           } else if (state is JokeLoadingState) {
             return const Center(
@@ -61,9 +64,13 @@ class _JokeScreenState extends State<JokeScreen> {
               behavior: SnackBarBehavior.floating,
               backgroundColor: Colors.transparent,
               content: AwesomeSnackbarContent(
-                title: 'tAdA!!',
+                title: 'TAdA!! 😆',
                 message: 'Hold On Tight, Here Comes a New Joke! 🚀',
                 contentType: ContentType.success,
+                color: AppColors.surfaceColorLight,
+                messageFontSize: AppFontSizes.small,
+                titleFontSize: AppFontSizes.large,
+
               ),
             );
             ScaffoldMessenger.of(context)
@@ -79,6 +86,7 @@ class _JokeScreenState extends State<JokeScreen> {
               content: AwesomeSnackbarContent(
                 title: 'Awesome!!',
                 message: 'Congratulations! You\'ve Just Unlocked the First Joke! 🎉',
+                color: AppColors.black,
                 contentType: ContentType.success,
               ),
             );
