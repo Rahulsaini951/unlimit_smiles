@@ -15,6 +15,7 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   final JokeRepository jokeRepository;
+
   const MyApp(this.jokeRepository, {super.key});
 
   @override

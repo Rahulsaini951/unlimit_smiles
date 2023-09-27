@@ -2,9 +2,10 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import '../api/joke_api.dart';
-part 'joke_event.dart';
-part 'joke_state.dart';
 
+part 'joke_event.dart';
+
+part 'joke_state.dart';
 
 class JokeBloc extends Bloc<JokeEvent, JokeState> {
   final JokeRepository jokeRepository;
@@ -54,18 +55,16 @@ class JokeBloc extends Bloc<JokeEvent, JokeState> {
   }
 
   Future<JokeState> mapEventToState(JokeEvent event) async {
+    try {
+      List<String> existingJokes = await jokeRepository.loadJokesFromSharedPreferences();
 
-      try {
-        List<String> existingJokes = await jokeRepository.loadJokesFromSharedPreferences();
-
-        if (existingJokes.isNotEmpty) {
-          return JokeLoaded(existingJokes);
-        }
-
-        return fetchJokeAndUpdateCache();
-      } catch (e) {
-        return JokeError('Error fetching or loading jokes: $e');
+      if (existingJokes.isNotEmpty) {
+        return JokeLoaded(existingJokes);
       }
+      return fetchJokeAndUpdateCache();
+    } catch (e) {
+      return JokeError('Error fetching or loading jokes: $e');
+    }
   }
 
   @override
@@ -74,4 +73,3 @@ class JokeBloc extends Bloc<JokeEvent, JokeState> {
     return super.close();
   }
 }
-
