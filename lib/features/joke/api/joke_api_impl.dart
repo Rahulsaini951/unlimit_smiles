@@ -1,10 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import '../utils/constants.dart';
 import 'joke_api.dart';
 
 class JokeApiImpl implements JokeRepository {
-  static const String apiUrl = 'https://geek-jokes.sameerkumar.website/api?format=json';
+  static const String apiUrl = baseUrl;
   SharedPreferences? _prefs;
 
   @override

@@ -9,10 +9,7 @@ part of 'joke_bloc.dart';
 //   List<Object> get props => [];
 // }
 
-abstract class JokeState  {
-  // @override
-  // List<Object?> get props => [];
-}
+abstract class JokeState  {}
 
 abstract class JokeActionState extends JokeState {}
 
@@ -22,20 +19,14 @@ class JokeLoadingState extends JokeState {}
 
 class JokeLoaded extends JokeState {
   final List<String> jokes;
-
   JokeLoaded(this.jokes);
-
-  // @override
-  // List<Object?> get props => [jokes];
 }
 
 class JokeError extends JokeState {
   final String error;
-
   JokeError(this.error);
-  //
-  // @override
-  // List<Object?> get props => [error];
 }
 
 class NewJokeAddedActionState extends JokeActionState {}
+
+class FirstJokeAddedActionState extends JokeActionState {}

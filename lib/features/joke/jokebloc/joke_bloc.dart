@@ -37,9 +37,9 @@ class JokeBloc extends Bloc<JokeEvent, JokeState> {
     String newJoke = await jokeRepository.fetchJoke();
 
     if (state is JokeLoaded) {
-      print("state is JokeLoaded");
       final List<String> updatedJokes = (state as JokeLoaded).jokes;
       updatedJokes.add(newJoke);
+      emit(NewJokeAddedActionState());
       if (updatedJokes.length > 10) {
         updatedJokes.removeAt(0);
       }
@@ -47,23 +47,21 @@ class JokeBloc extends Bloc<JokeEvent, JokeState> {
       await jokeRepository.saveJokesToSharedPreferences(updatedJokes);
       return JokeLoaded(updatedJokes);
     } else {
-      print("state is not JokeLoaded thus loading the first joke");
       await jokeRepository.saveJokesToSharedPreferences([newJoke]);
+      emit(FirstJokeAddedActionState());
       return JokeLoaded([newJoke]);
     }
   }
 
   Future<JokeState> mapEventToState(JokeEvent event) async {
-      print('event in mapEventToState is -> $event');
 
       try {
         List<String> existingJokes = await jokeRepository.loadJokesFromSharedPreferences();
 
         if (existingJokes.isNotEmpty) {
           return JokeLoaded(existingJokes);
-        } else {
-          print('existing jokes are empty');
         }
+
         return fetchJokeAndUpdateCache();
       } catch (e) {
         return JokeError('Error fetching or loading jokes: $e');
