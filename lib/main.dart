@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:unlimit_smiles/utils/constants.dart';
 import 'package:unlimit_smiles/utils/strings.dart';
-import 'features/joke/api/joke_api.dart';
+import 'features/joke/repository/joke_repository.dart';
 import 'features/joke/api/joke_api_impl.dart';
 import 'features/joke/jokebloc/joke_bloc.dart';
 import 'features/joke/ui/joke_screen.dart';

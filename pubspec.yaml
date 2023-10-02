@@ -62,6 +62,8 @@ flutter_icons:
   android: true
   ios: true
   image_path: "assets/1024.png"
+  adaptive_icon_background: '#BEEA3C'
+  adaptive_icon_foreground: "assets/foreground.png"
 
 # The following section is specific to Flutter packages.
 flutter:

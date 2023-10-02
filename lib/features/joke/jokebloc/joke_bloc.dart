@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../api/joke_api.dart';
+import '../repository/joke_repository.dart';
 
 part 'joke_event.dart';
 
@@ -17,10 +17,11 @@ class JokeBloc extends Bloc<JokeEvent, JokeState> {
     on<FetchJokeEvent>(fetchJokeEvent);
   }
 
-  Timer? _timer;
+  Timer? timer;
 
   void _initializeTimer() {
-    _timer = Timer.periodic(const Duration(minutes: 1), (timer) {
+    timer = Timer.periodic(const Duration(minutes: 1), (timer) {
+
       add(FetchJokeEvent());
     });
   }
@@ -69,7 +70,7 @@ class JokeBloc extends Bloc<JokeEvent, JokeState> {
 
   @override
   Future<void> close() {
-    _timer?.cancel();
+    timer?.cancel();
     return super.close();
   }
 }

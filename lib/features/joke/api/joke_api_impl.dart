@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../utils/strings.dart';
-import 'joke_api.dart';
+import '../repository/joke_repository.dart';
 
 class JokeApiImpl implements JokeRepository {
   static const String apiUrl = baseUrl;

@@ -29,7 +29,10 @@ class _JokeScreenState extends State<JokeScreen> {
       backgroundColor: AppColors.primary_background,
       appBar: AppBar(
         backgroundColor: AppColors.primary_background,
-        title: const Text(appTitle, style: TextStyle(fontWeight: FontWeight.w600, color: AppColors.black),),
+        title: const Text(
+          appTitle,
+          style: TextStyle(fontWeight: FontWeight.w600, color: AppColors.black),
+        ),
       ),
       body: BlocConsumer<JokeBloc, JokeState>(
         bloc: _jokeBloc,
@@ -70,7 +73,6 @@ class _JokeScreenState extends State<JokeScreen> {
                 color: AppColors.surfaceColorLight,
                 messageFontSize: AppFontSizes.small,
                 titleFontSize: AppFontSizes.large,
-
               ),
             );
             ScaffoldMessenger.of(context)
